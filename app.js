@@ -7,7 +7,7 @@ const from = document.getElementById('from');
 
 
 
- //Passward
+ 
 
 
 
@@ -24,6 +24,10 @@ const from = document.getElementById('from');
     small.innerText = message;
  }
 
+
+
+ //show success outline
+
  function showSuccess(input){
     const fromControl = input.parentElement;
     fromControl.className = 'from-control success';
@@ -31,6 +35,13 @@ const from = document.getElementById('from');
 
 }
 
+//email validation
+
+function isValidEmail(Email){
+    const re = /\S+@\S+\.\S+/;
+    return re.test(Email);
+
+}
 
 
  //event listeners
@@ -63,6 +74,12 @@ const from = document.getElementById('from');
         showError(Email,'Email is required');
 
     }
+
+    else if(!isValidEmail(Email.value)){
+
+        showError(Email,'Email is not valid ');
+        
+    }
     else{
         showSuccess(Email);
     }
@@ -72,6 +89,8 @@ const from = document.getElementById('from');
         showError(Passward,'Passward is required');
 
     }
+
+    
     else{
         showSuccess(Passward);
     }
